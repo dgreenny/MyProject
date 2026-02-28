@@ -1247,6 +1247,24 @@ public class GameSetup : MonoBehaviour
                             r.material = superRedMat;
                         }
                     }
+
+                    // Add a red helmet to the animated model's head bone
+                    var anim = soldier.GetComponentInChildren<Animator>();
+                    if (anim != null && anim.isHuman)
+                    {
+                        Transform headBone = anim.GetBoneTransform(HumanBodyBones.Head);
+                        if (headBone != null)
+                        {
+                            var helmet = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                            helmet.name = "SuperHelmet";
+                            helmet.transform.SetParent(headBone);
+                            helmet.transform.localPosition = new Vector3(0f, 0.12f, 0f);
+                            helmet.transform.localRotation = Quaternion.identity;
+                            helmet.transform.localScale = new Vector3(0.28f, 0.2f, 0.28f);
+                            helmet.GetComponent<Renderer>().material = superRedMat;
+                            Object.Destroy(helmet.GetComponent<Collider>());
+                        }
+                    }
                 }
                 else
                 {
