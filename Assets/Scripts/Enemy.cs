@@ -279,7 +279,7 @@ public class Enemy : MonoBehaviour
             float pitch = Mathf.Atan2(gunWorldHeight - playerChestHeight, faceDir.magnitude) * Mathf.Rad2Deg;
             pitch = Mathf.Clamp(pitch, 0f, 30f);
 
-            transform.rotation = Quaternion.LookRotation(faceDir.normalized) * Quaternion.Euler(pitch, 40f, 0f);
+            transform.rotation = Quaternion.LookRotation(faceDir.normalized) * Quaternion.Euler(-pitch, 40f, 0f);
         }
 
         // Force animator to re-evaluate bone poses with the updated rotation
